@@ -20,8 +20,8 @@ CREATE TABLE members(
 
 CREATE TABLE messages(
     id SERIAL PRIMARY KEY,
-    userId INTEGER REFERENCES users(id),
-    chatId INTEGER REFERENCES chats(id),
+    userId INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    chatId INTEGER REFERENCES chats(id) ON DELETE CASCADE,
     content TEXT NOT NULL,
     messageDate DATE DEFAULT CURRENT_DATE
 );

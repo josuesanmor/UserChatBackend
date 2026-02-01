@@ -108,7 +108,7 @@ export const addUserChat = async (req, res) => {
   if (await Member.isMember(friendId, chatId))
     return res.json({ already: true, message: "ya eh miembro" });
 
-  const addFriend = Member.addMember(friendId, chatId);
+  const addFriend = await Member.addMember(friendId, chatId);
   if (!addFriend) return res.json({ message: "Ocurrio un error" });
 
   res.json({ ok: true, message: "Usuario agregado" });
