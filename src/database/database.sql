@@ -1,0 +1,27 @@
+CREATE DATABASE chatsistem;
+
+CREATE TABLE users(
+    id SERIAL PRIMARY KEY,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
+);
+
+CREATE TABLE chats(
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    description TEXT,
+    isGroup BOOL DEFAULT FALSE
+);
+
+CREATE TABLE members(
+    userId INTEGER REFERENCES users(id),
+    chatId INTEGER REFERENCES chats(id)
+);
+
+CREATE TABLE messages(
+    id SERIAL PRIMARY KEY,
+    userId INTEGER REFERENCES users(id),
+    chatId INTEGER REFERENCES chats(id),
+    content TEXT NOT NULL,
+    messageDate DATE DEFAULT CURRENT_DATE
+);
