@@ -14,8 +14,8 @@ CREATE TABLE chats(
 );
 
 CREATE TABLE members(
-    userId INTEGER REFERENCES users(id),
-    chatId INTEGER REFERENCES chats(id)
+    userId INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    chatId INTEGER REFERENCES chats(id) ON DELETE CASCADE
 );
 
 CREATE TABLE messages(
